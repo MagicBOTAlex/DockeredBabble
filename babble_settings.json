@@ -25,7 +25,7 @@
     "gui_ROSC": false,
     "gui_osc_location": "",
     "gui_multiply": 1.0,
-    "gui_model_file": "Models/EFFB0E11BS128V7.5",
+    "gui_model_file": "Models/EFFB0E5BS224V6.3.4",
     "gui_runtime": "ONNX",
     "gui_use_gpu": true,
     "gui_gpu_index": 0,

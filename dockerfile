@@ -20,6 +20,8 @@ ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
 
 WORKDIR /app
 RUN git clone https://github.com/Project-Babble/ProjectBabble.git
+WORKDIR /app/ProjectBabble/BabbleApp
+RUN git revert --no-commit 50d03ce # Use old model
 
 RUN apt-get update && \
     apt-get install -y python3-tk \
@@ -30,18 +32,17 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y vim
     
-WORKDIR /app/ProjectBabble/BabbleApp
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r requirements.txt
 COPY app.py .
-COPY babble_settings.json .
 VOLUME ["/root/.cache/pip"]
 
 ## CUDA SUPPORT
 RUN pip uninstall -y onnxruntime onnxruntime-gpu
 RUN pip install onnxruntime-gpu
-    
 
+
+COPY babble_settings.json .
 COPY . /app
 
 # CMD ["xvfb-run", "-a", "-s", "-screen 0 1280x1024x24", "python3", "/app/ProjectBabble/BabbleApp/babbleapp.py"]
