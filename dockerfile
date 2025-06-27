@@ -36,7 +36,6 @@ RUN apt-get update && \
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r requirements.txt
 RUN pip install desktop_notifier
-COPY app.py .
 VOLUME ["/root/.cache/pip"]
 
 ## CUDA SUPPORT
