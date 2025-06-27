@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd /home/botserver/scripts/docker/DockeredBabble
+
 # Name of the Docker image
 IMAGE_NAME="dockered-babble"
 
@@ -12,4 +14,4 @@ docker remove babble
 
 # Run the Docker container
 echo "Running the container..."
-docker run --network host --gpus=all --shm-size=1g --name babble -it $IMAGE_NAME
+docker compose up -d

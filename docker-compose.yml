@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  babble:
+    image: "dockered-babble"
+    container_name: babble
+    network_mode: host
+    gpus: all
+    shm_size: 1g
+    volumes:
+      - ./babble_settings.json:/app/ProjectBabble/BabbleApp/babble_settings.json
+    stdin_open: true   # keep STDIN open (like -i)
+    tty: true          # allocate a TTY (like -t)
+

@@ -21,6 +21,7 @@ ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
 WORKDIR /app
 RUN git clone https://github.com/Project-Babble/ProjectBabble.git
 WORKDIR /app/ProjectBabble/BabbleApp
+RUN git reset --hard 1de5670 # Locks the project pulled to this specific version
 RUN git revert --no-commit 50d03ce # Use old model
 
 RUN apt-get update && \
@@ -34,6 +35,7 @@ RUN apt-get update && \
     
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r requirements.txt
+RUN pip install desktop_notifier
 COPY app.py .
 VOLUME ["/root/.cache/pip"]
 
@@ -42,8 +44,8 @@ RUN pip uninstall -y onnxruntime onnxruntime-gpu
 RUN pip install onnxruntime-gpu
 
 
-COPY babble_settings.json .
-COPY . /app
+# COPY babble_settings.json .
+# COPY . /app
 
 # CMD ["xvfb-run", "-a", "-s", "-screen 0 1280x1024x24", "python3", "/app/ProjectBabble/BabbleApp/babbleapp.py"]
 CMD ["python3", "babbleapp.py"]
