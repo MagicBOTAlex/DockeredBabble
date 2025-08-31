@@ -6,7 +6,7 @@
     "roi_window_y": 16,
     "roi_window_w": 187,
     "roi_window_h": 193,
-    "capture_source": "http://192.168.0.105",
+    "capture_source": "http://192.168.50.44",
     "gui_vertical_flip": true,
     "gui_horizontal_flip": false,
     "use_ffmpeg": false
@@ -14,9 +14,9 @@
   "settings": {
     "gui_min_cutoff": "3",
     "gui_speed_coefficient": "0.9",
-    "gui_osc_address": "192.168.0.103",
-    "gui_osc_port": 8888,
-    "gui_osc_receiver_port": 7263,
+    "gui_osc_address": "192.168.50.58",
+    "gui_osc_port": 9400,
+    "gui_osc_receiver_port": 9410,
     "gui_osc_recalibrate_address": "/avatar/parameters/babble_recalibrate",
     "gui_disable_camera_preview": false,
     "gui_osc_delay_enable": false,
